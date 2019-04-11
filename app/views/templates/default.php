@@ -16,7 +16,7 @@
     <div class="container">
         <div class="col-md-6">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.php">Project name</a>
+                <a class="navbar-brand" href="index.php">billet simple pour l'Alaska</a>
 
             </div>
         </div>
