@@ -14,12 +14,17 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="index.php?p=home">Project name</a>
+        <div class="col-md-6">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.php">Project name</a>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <a href="index.php?p=users.login" class="navbar-brand">Administration</a>
         </div>
     </div>
 </nav>
-
 <div class="container">
 
     <div class="starter-template" style="padding-top: 100px;">

@@ -1,24 +1,15 @@
+<!--
+login:
+deux variables envoyé sur users.login:
+$form => Crée un nouvel objet "BootstrapForm" -> input , password
+$errors => false ou true, si le login est bon = true et renvoie sur admin.posts.index, si le login et faux = message d'erreur
+-->
 <?php
-use Core\Auth\DBAuth;
-use Core\HTML\BootstrapForm;
-
-if (!empty( $_POST )) {
-    $auth = new DBAuth( App::getInstance()->getDb() );
-    if ($auth->login( $_POST['username'], $_POST['password'] )) {
-        header('location: admin.php');
-    } else {
-        ?>
+if ($errors) : ?>
 <div class="alert alert-danger">
-    Identifiants Incorrect
+    Identifiants Incorrects
 </div>
-
-        <?php
-    }
-}
-
-
-$form = new BootstrapForm( $_POST );
-?>
+<?php endif; ?>
 
 <form method="post">
     <?= $form->input( 'username', 'Pseudo' ); ?>

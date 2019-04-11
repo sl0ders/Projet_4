@@ -12,14 +12,13 @@ class PostTable extends Table
      * récupere les derniers article
      * @return array
      */
-
     public function last()
     {
         return $this->query("
-            SELECT articles.id,articles.titre,articles.contenu, articles.date, categories.titre as categorie
+            SELECT articles.id,articles.titre,articles.contenu, articles.date, articles.auteur, categories.titre as categorie
             FROM articles
             LEFT JOIN categories ON category_id = categories.id
-            ORDER BY articles.date DESC");
+            ORDER BY articles.date DESC LIMIT 0,2");
     }
 
     /**
@@ -30,12 +29,12 @@ class PostTable extends Table
     public function lastByCategory($category_id)
     {
         return $this->query("
-            SELECT articles.id, articles.titre,articles.contenu, articles.date, categories.titre as categorie
+            SELECT articles.id, articles.titre,articles.contenu, articles.date,articles.auteur, categories.titre as categorie
             FROM articles
             LEFT JOIN categories ON category_id = categories.id
             WHERE articles.category_id = ?
             ORDER BY articles.date DESC
-            ", [$category_id],);
+            ", [$category_id]);
     }
 
     /**
@@ -43,13 +42,13 @@ class PostTable extends Table
      * @return \App\Entity\PostEntity
      */
 
-    public function findlie($id)
+    public function findWithCategory($id)
     {
         return $this->query("
-            SELECT articles.id, articles.titre,articles.contenu, articles.date, categories.titre as categorie
+            SELECT articles.id, articles.titre,articles.contenu, articles.date ,articles.auteur, categories.titre as categorie
             FROM articles
             LEFT JOIN categories ON category_id = categories.id
-            WHERE articles.id = ?,[$id], true
-           ");
+            WHERE articles.id = ?", [$id], true
+        );
     }
 }

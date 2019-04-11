@@ -1,26 +1,13 @@
-<?php
-use Core\HTML\BootstrapForm;
-
-$posTable = App::getInstance()->getTable('Post');
-if (!empty($_POST)) {
-    $result = $posTable->update($_GET['id'], [
-        'titre' => $_POST['titre'],
-        'contenu' => $_POST['contenu'],
-        'category_id' => $_POST['category_id']
-    ]);
-
-    if ($result) {
-header('Location: admin.php');
-    }
-}
-$post = $posTable->find($_GET['id']);
-$categories = App::getInstance()->getTable('Category')->extract('id' , 'titre');
-$form = new BootstrapForm($post);
-
-?>
+<!--
+add + edit:
+deux variables envoyé sur admin.posts.edit:
+form => Crée un nouvel objet "BootstrapForm" -> input , textarea , select
+categories => extract() renvoie l'id et le titre de la table catagories
+-->
 
 <form method="post">
     <?= $form->input('titre', "Titre de l'article"); ?>
+    <?= $form->input('auteur', "auteur de l'article"); ?>
     <?= $form->textarea('contenu', 'contenu'); ?>
     <?= $form->select('category_id', 'Categorie', $categories); ?>
 
