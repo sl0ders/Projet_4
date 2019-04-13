@@ -8,7 +8,7 @@ App::load();
 if (isset($_GET['p'])) {
     $page = $_GET['p'];
 } else {
-    $page = 'posts.index';
+    $page = 'articles.index';
 }
 $page = explode('.', $page);
 if($page[0] == 'admin'){

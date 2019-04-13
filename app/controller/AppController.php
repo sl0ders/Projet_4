@@ -13,8 +13,8 @@ class AppController extends Controller
         $this->viewpath = ROOT . '/app/views/';
     }
 
-    protected function loadTable($Table_name)
+    protected function loadModel($Model_name)
     {
-       $this->$Table_name = App::getInstance()->getTable($Table_name);
+       $this->$Model_name = App::getInstance()->getModel($Model_name);
     }
 }

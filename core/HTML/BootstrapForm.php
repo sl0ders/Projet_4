@@ -60,4 +60,5 @@ class BootstrapForm extends Form
         $input .= '</select>';
         return $this->surround($label . $input);
     }
+
 }

@@ -15,8 +15,12 @@ class Table
         if (is_null($this->table)) {
             $parts = explode('\\', get_class($this));
             $class_name = end($parts);
-            $this->table = strtolower(str_replace('Table', '', $class_name)) . 's';
+            $this->table = strtolower(str_replace('Model', '', $class_name)) . 's';
         }
+    }
+
+    public function count($id){
+        return $this->query('SELECT COUNT (*) FROM ' . $this->table . ' WHERE id = ?',[$id]);
     }
 
     public function all()
@@ -78,13 +82,13 @@ class Table
             return $this->db->prepare(
                 $statement,
                 $attributes,
-                str_replace('Table', 'Entity', get_class($this)),
+                str_replace('Model', 'Entity', get_class($this)),
                 $one
             );
         } else {
             return $this->db->query(
                 $statement,
-                str_replace('Table',
+                str_replace('Model',
                     'Entity', get_class($this)),
                 $one
             );

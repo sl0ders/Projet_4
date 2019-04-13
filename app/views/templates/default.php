@@ -16,20 +16,20 @@
     <div class="container">
         <div class="col-md-6">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.php">billet simple pour l'Alaska</a>
-
+                <a class="navbar-brand" href="index.php">Billet simple pour l'Alaska</a>
             </div>
         </div>
         <div class="col-md-6">
-            <a href="index.php?p=users.login" class="navbar-brand">Administration</a>
+            <a href="<?php if (!isset($_SESSION['auth'])) {
+                ?>index.php?p=users.login" class=" navbar-brand">Administration</a> <?php }
+            else { ?>index.php?p=admin.articles.index" class=" navbar-brand">Administration<a href="?p=users.disconnect"><button class="btn-danger btn-sm">Deconnection</button></a><?php } ?>
         </div>
     </div>
 </nav>
 <div class="container">
-
     <div class="starter-template" style="padding-top: 100px;">
         <?= $content; ?>
     </div>
+</div>
 
-</div><!-- /.container -->
-</html>
+
