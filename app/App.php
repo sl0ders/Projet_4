@@ -1,4 +1,5 @@
 <?php
+
 use Core\Config;
 use Core\Database\MysqlDatabase;
 
@@ -25,9 +26,9 @@ class App
         Core\Autoloader::register();
     }
 
-    public function getTable($name)
+    public function getModel($name)
     {
-        $class_name = '\\App\\Table\\' . ucfirst($name) . 'Table';
+        $class_name = '\\App\\Model\\' . ucfirst($name) . 'Model';
         return new $class_name($this->getDb());
     }
 
@@ -39,38 +40,6 @@ class App
         }
         return $this->db_instance;
     }
-
-    public function forbidden(){
-        header('HTTP/1.0 403 Forbidden');
-        die('Acces interdit');
-    }
-
-    public function notFound(){
-        header('HTTP/1.0 404 Not Found');
-        die('Page introuvable');
-    }
 }
 
 
-//private static $title = 'Mon super site';
-
-
-/*public static function getTitle(){
-    return self::$title;
-}
-
-public static function setTitle($title){
-    self::$title = $title. ' | ' .self::$title;
-}
-
-private static $database;
-
-
-
-public
-static function notFound()
-{
-    header('HTTP/1.0 404 Not found');
-    header('Location:index.php?p=404');
-}
-}*/

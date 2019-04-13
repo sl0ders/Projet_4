@@ -14,17 +14,22 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="index.php?p=home">Project name</a>
+        <div class="col-md-6">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.php">Billet simple pour l'Alaska</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <a href="<?php if (!isset($_SESSION['auth'])) {
+                ?>index.php?p=users.login" class=" navbar-brand">Administration</a> <?php }
+            else { ?>index.php?p=admin.articles.index" class=" navbar-brand">Administration<a href="?p=users.disconnect"><button class="btn-danger btn-sm">Deconnection</button></a><?php } ?>
         </div>
     </div>
 </nav>
-
 <div class="container">
-
     <div class="starter-template" style="padding-top: 100px;">
         <?= $content; ?>
     </div>
+</div>
 
-</div><!-- /.container -->
-</html>
+
