@@ -27,10 +27,10 @@ class BootstrapForm extends Form
         return $this->surround($label . $input);
     }
 
-    public function textarea($name, $label)
+    public function textarea($name, $label, $id)
     {
         return $this->surround(
-            '<label>' . $label . ' </label ><textarea name = "' . $name . '" class = "form-control">' . $this->getValue($name) . '</textarea>');
+            '<label>' . $label . ' </label ><textarea id="' . $id . '" name = "' . $name . '" class = "form-control">' . $this->getValue($name) . '</textarea>');
     }
 
     public function password($name, $label)

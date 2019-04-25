@@ -7,7 +7,7 @@ chapters => extract() renvoie l'id et le title de la table catagories
 
 <form method="post">
     <?= $form->input('title', "Titre de l'article"); ?>
-    <?= $form->textarea('content', "Contenu de l'article"); ?>
+    <?= $form->textarea('content', "Contenu de l'article", 'active'); ?>
     <?= $form->select('chapter_id', 'Chapitres', $chapters);?>
     <?= $form->number('Article n° : ', 'number');?>
     <?= $form->checkbox('Publier', 'publish');?>
