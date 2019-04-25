@@ -54,7 +54,9 @@
             $comment.after($form);
             $form.slideDown();
         })
-
     });
+
+
+
 })(jQuery); // End of use strict
 

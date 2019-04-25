@@ -14,18 +14,18 @@
     <a href="?p=admin.articles.add" class="btn btn-success ">Ajouter un article</a><br><br></div>
 <?php } ?>
 
-<div class="responsive-table-line" style="margin:0 auto;max-width:90%;">
-    <table class="table table-bordered table-condensed table-body-center" >
+<div class="responsive-table-line" style="margin:0 auto;max-width:95%;">
+    <table id="selectedColumn" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
         <thead>
         <tr>
-            <th>numero de l'article</th>
-            <th>Titre</th>
-            <th>Chapitre n°</th>
-            <th>Extrait</th>
-            <th>Action</th>
-            <th>Date Modif</th>
-            <th>Nb° commentaires</th>
-            <th>Etat de publication</th>
+            <th class="th-sm">Numero de l'article</th>
+            <th class="th-sm">Titre</th>
+            <th class="th-sm">Chapitre n°</th>
+            <th class="th-sm">Extrait</th>
+            <th class="th-sm">Action</th>
+            <th class="th-sm">Date Modif</th>
+            <th class="th-sm">Nb° commentaires</th>
+            <th class="th-sm">Etat de publication</th>
         </tr>
         </thead>
         <tbody>

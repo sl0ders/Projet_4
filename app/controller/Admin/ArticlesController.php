@@ -28,7 +28,7 @@ class ArticlesController extends AppController
     {
         if (!empty($_POST)) {
             if (!empty($_POST['number'])) {
-                if (strlen($_POST['content']) <= 1000) {
+                if (strlen($_POST['content']) <= 10000) {
                     $numberExist = $this->Article->numberExist($_POST['number']);
                     if ($numberExist === true) {
                         $post = $_POST['publish'];
@@ -64,12 +64,17 @@ class ArticlesController extends AppController
     public function edit()
     {
         if (!empty($_POST)) {
+            $post = $_POST['publish'];
+            if ($post === 'on') {
+                $_POST['publish'] = 1;
+            } else {
+                $_POST['publish'] = 0;
+            }
             $result = $this->Article->update($_GET['id'], [
                 'title' => htmlspecialchars($_POST['title']),
                 'content' => $_POST['content'],
                 'chapter_id' => htmlspecialchars($_POST['chapter_id']),
                 'publish' => htmlspecialchars($_POST['publish']),
-                'number' => htmlspecialchars($_POST['number'])
             ]);
             if ($result) {
                 header('Location:index.php?p=admin.articles.index');
