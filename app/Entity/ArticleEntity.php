@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use Core\Entity\Entity;
 
 class articleEntity extends Entity
 {
@@ -11,9 +10,9 @@ class articleEntity extends Entity
         return 'index.php?p=articles.show&id=' . $this->id;
     }
 
-    public function getExtrait()
+    public function getExtract()
     {
-        $html = '<p>' . substr($this->content, 0, 100) . '...</p>';
+        $html = '<p>' . substr($this->content, 0, 300) . '...</p>';
         $html .= '<p><a href="' . $this->getUrl() . '">voir la suite</a></p>';
         return $html;
     }
@@ -23,9 +22,9 @@ class articleEntity extends Entity
         return 'index.php?p=admin.articles.show&id=' . $this->id;
     }
 
-    public function getExtraitForAdmin()
+    public function getExtractForAdmin()
     {
-        $html = '<p>' . substr($this->content, 0, 100) . '...</p>';
+        $html = '<p>' . substr($this->content, 0, 70) . '...</p>';
         $html .= '<p><a href="' . $this->getUrlForAdmin() . '">voir la suite</a></p>';
         return $html;
     }

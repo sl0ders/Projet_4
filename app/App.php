@@ -1,11 +1,11 @@
 <?php
 
 use Core\Config;
-use Core\Database\MysqlDatabase;
+use App\Database\MysqlDatabase;
 
 class App
 {
-    public $title = "Mon super site";
+    public $title = "Billet simple pour l'alaska";
     private $db_instance;
     private static $_instance;
 
@@ -23,7 +23,7 @@ class App
         require ROOT . '/app/Autoloader.php';
         App\Autoloader::register();
         require '../core/autoloader.php';
-        Core\Autoloader::register();
+        Core\autoloader::register();
     }
 
     public function getModel($name)

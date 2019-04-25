@@ -17,7 +17,7 @@ header.masthead {
     opacity: 0.5;
   }
   .page-heading,
-  .article-heading,
+  .post-heading,
   .site-heading {
     padding: 200px 0 150px;
     color: white;
@@ -46,7 +46,7 @@ header.masthead {
       }
     }
   }
-  .article-heading {
+  .post-heading {
     h1 {
       font-size: 35px;
     }

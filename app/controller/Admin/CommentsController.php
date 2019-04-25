@@ -4,7 +4,7 @@
 namespace App\Controller\Admin;
 
 use App;
-use Core\HTML\BootstrapForm;
+use App\Views\html\BootstrapForm;
 
 class CommentsController extends AppController
 {
@@ -12,6 +12,7 @@ class CommentsController extends AppController
     {
         parent::__construct();
         $this->loadModel('Comment');
+        $this->loadModel('Article');
     }
 
     public function index()

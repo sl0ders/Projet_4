@@ -2,26 +2,19 @@
 
 namespace App\Model;
 
-use Core\Table\Table;
-
-class CommentModel extends Table
+class CommentModel extends Model
 {
     protected $table = 'comments';
 
-    public function getComments($articleId)
+    public function getComments()
     {
-        return $this->query('
-            SELECT comments.id , comments.author, comments.content, comments.date
-            FROM comments 
-            WHERE article_id = ? 
-            ORDER BY comments.date DESC', [$articleId]
-        );
+        return $this->query("SELECT * FROM comments");
     }
 
     public function getComment($commentId)
     {
         return $this->query('
-            SELECT comments.id, comments.author, comments.content, comments.date
+            SELECT comments.id, comments.author, comments.content, DATE_FORMAT(comments.date,\'%d/%m/%Y à %Hh%imin%ss\') AS date_fr
             FROM comments
             WHERE article_id = ?', [$commentId]
         );
@@ -30,9 +23,10 @@ class CommentModel extends Table
     public function last()
     {
         return $this->query("
-            SELECT comments.id, comments.author ,comments.content, comments.date, articles.title as article
+            SELECT comments.id, comments.author, comments.parent_id,comments.content, DATE_FORMAT(comments.date,'%d/%m/%Y à %Hh%imin%ss') AS date_fr, articles.title as article
             FROM comments
             LEFT JOIN articles ON article_id = articles.id
-            ORDER BY comments.date DESC");
+            ORDER BY comments.date DESC
+        ");
     }
 }

@@ -573,7 +573,7 @@ pre code {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1140px;
+    max-width: 4000px;
   }
 }
 
@@ -2423,6 +2423,7 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
+
 }
 
 .btn-primary:hover {

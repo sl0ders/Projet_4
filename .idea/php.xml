@@ -2,7 +2,6 @@
 <project version="4">
   <component name="PhpIncludePathManager">
     <include_path>
-      <path value="$PROJECT_DIR$/../../bin/php/php7.3.1/pear" />
       <path value="C:/pear/PEAR-1.10.9/scripts" />
     </include_path>
   </component>

@@ -975,7 +975,7 @@ function createDisabledPseudo( disabled ) {
 
 			// Check for inherited disabledness on relevant non-disabled elements:
 			// * listed form-associated elements in a disabled fieldset
-			//   https://html.spec.whatwg.org/multipage/forms.html#chapter-listed
+			//   https://html.spec.whatwg.org/multipage/forms.html#category-listed
 			//   https://html.spec.whatwg.org/multipage/forms.html#concept-fe-disabled
 			// * option elements in a disabled optgroup
 			//   https://html.spec.whatwg.org/multipage/forms.html#concept-option-disabled
@@ -1312,7 +1312,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 				rbuggyQSA.push( ":enabled", ":disabled" );
 			}
 
-			// Opera 10-11 does not throw on article-comma invalid pseudos
+			// Opera 10-11 does not throw on post-comma invalid pseudos
 			el.querySelectorAll("*,:x");
 			rbuggyQSA.push(",.*:");
 		});
@@ -2313,17 +2313,17 @@ function condense( unmatched, map, filter, context, xml ) {
 	return newUnmatched;
 }
 
-function setMatcher( preFilter, selector, matcher, articleFilter, articleFinder, articleSelector ) {
-	if ( articleFilter && !articleFilter[ expando ] ) {
-		articleFilter = setMatcher( articleFilter );
+function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postSelector ) {
+	if ( postFilter && !postFilter[ expando ] ) {
+		postFilter = setMatcher( postFilter );
 	}
-	if ( articleFinder && !articleFinder[ expando ] ) {
-		articleFinder = setMatcher( articleFinder, articleSelector );
+	if ( postFinder && !postFinder[ expando ] ) {
+		postFinder = setMatcher( postFinder, postSelector );
 	}
 	return markFunction(function( seed, results, context, xml ) {
 		var temp, i, elem,
 			preMap = [],
-			articleMap = [],
+			postMap = [],
 			preexisting = results.length,
 
 			// Get initial elements from seed or context
@@ -2335,8 +2335,8 @@ function setMatcher( preFilter, selector, matcher, articleFilter, articleFinder,
 				elems,
 
 			matcherOut = matcher ?
-				// If we have a articleFinder, or filtered seed, or non-seed articleFilter or preexisting results,
-				articleFinder || ( seed ? preFilter : preexisting || articleFilter ) ?
+				// If we have a postFinder, or filtered seed, or non-seed postFilter or preexisting results,
+				postFinder || ( seed ? preFilter : preexisting || postFilter ) ?
 
 					// ...intermediate processing is necessary
 					[] :
@@ -2350,24 +2350,24 @@ function setMatcher( preFilter, selector, matcher, articleFilter, articleFinder,
 			matcher( matcherIn, matcherOut, context, xml );
 		}
 
-		// Apply articleFilter
-		if ( articleFilter ) {
-			temp = condense( matcherOut, articleMap );
-			articleFilter( temp, [], context, xml );
+		// Apply postFilter
+		if ( postFilter ) {
+			temp = condense( matcherOut, postMap );
+			postFilter( temp, [], context, xml );
 
 			// Un-match failing elements by moving them back to matcherIn
 			i = temp.length;
 			while ( i-- ) {
 				if ( (elem = temp[i]) ) {
-					matcherOut[ articleMap[i] ] = !(matcherIn[ articleMap[i] ] = elem);
+					matcherOut[ postMap[i] ] = !(matcherIn[ postMap[i] ] = elem);
 				}
 			}
 		}
 
 		if ( seed ) {
-			if ( articleFinder || preFilter ) {
-				if ( articleFinder ) {
-					// Get the final matcherOut by condensing this intermediate into articleFinder contexts
+			if ( postFinder || preFilter ) {
+				if ( postFinder ) {
+					// Get the final matcherOut by condensing this intermediate into postFinder contexts
 					temp = [];
 					i = matcherOut.length;
 					while ( i-- ) {
@@ -2376,29 +2376,29 @@ function setMatcher( preFilter, selector, matcher, articleFilter, articleFinder,
 							temp.push( (matcherIn[i] = elem) );
 						}
 					}
-					articleFinder( null, (matcherOut = []), temp, xml );
+					postFinder( null, (matcherOut = []), temp, xml );
 				}
 
 				// Move matched elements from seed to results to keep them synchronized
 				i = matcherOut.length;
 				while ( i-- ) {
 					if ( (elem = matcherOut[i]) &&
-						(temp = articleFinder ? indexOf( seed, elem ) : preMap[i]) > -1 ) {
+						(temp = postFinder ? indexOf( seed, elem ) : preMap[i]) > -1 ) {
 
 						seed[temp] = !(results[temp] = elem);
 					}
 				}
 			}
 
-		// Add elements to results, through articleFinder if defined
+		// Add elements to results, through postFinder if defined
 		} else {
 			matcherOut = condense(
 				matcherOut === results ?
 					matcherOut.splice( preexisting, matcherOut.length ) :
 					matcherOut
 			);
-			if ( articleFinder ) {
-				articleFinder( null, results, matcherOut, xml );
+			if ( postFinder ) {
+				postFinder( null, results, matcherOut, xml );
 			} else {
 				push.apply( results, matcherOut );
 			}
@@ -2933,10 +2933,10 @@ var rootjQuery,
 				match = rquickExpr.exec( selector );
 			}
 
-			// Match html or make sure no context is specified for #id
+			// Match HTML or make sure no context is specified for #id
 			if ( match && ( match[ 1 ] || !context ) ) {
 
-				// HANDLE: $(html) -> $(array)
+				// HANDLE: $(HTML) -> $(array)
 				if ( match[ 1 ] ) {
 					context = context instanceof jQuery ? context[ 0 ] : context;
 
@@ -2948,7 +2948,7 @@ var rootjQuery,
 						true
 					) );
 
-					// HANDLE: $(html, props)
+					// HANDLE: $(HTML, props)
 					if ( rsingleTag.test( match[ 1 ] ) && jQuery.isPlainObject( context ) ) {
 						for ( match in context ) {
 
@@ -3233,7 +3233,7 @@ jQuery.Callbacks = function( options ) {
 	var // Flag to know if list is currently firing
 		firing,
 
-		// Last fire value for non-forgetModel lists
+		// Last fire value for non-forgettable lists
 		memory,
 
 		// Flag to know if list was already fired
@@ -3609,7 +3609,7 @@ jQuery.extend( {
 
 											// Support: Promises/A+ section 2.3.3.3.4.1
 											// https://promisesaplus.com/#point-61
-											// Ignore article-resolution exceptions
+											// Ignore post-resolution exceptions
 											if ( depth + 1 >= maxDepth ) {
 
 												// Only substitute handlers pass on context
@@ -4759,11 +4759,11 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 				// push.apply(_, arraylike) throws on ancient WebKit
 				jQuery.merge( nodes, elem.nodeType ? [ elem ] : elem );
 
-			// Convert non-html into a text node
+			// Convert non-HTML into a text node
 			} else if ( !rhtml.test( elem ) ) {
 				nodes.push( context.createTextNode( elem ) );
 
-			// Convert html into DOM nodes
+			// Convert HTML into DOM nodes
 			} else {
 				tmp = tmp || fragment.appendChild( context.createElement( "div" ) );
 
@@ -5192,9 +5192,9 @@ jQuery.event = {
 			}
 		}
 
-		// Call the articleDispatch hook for the mapped type
-		if ( special.articleDispatch ) {
-			special.articleDispatch.call( this, event );
+		// Call the postDispatch hook for the mapped type
+		if ( special.postDispatch ) {
+			special.postDispatch.call( this, event );
 		}
 
 		return event.result;
@@ -5335,7 +5335,7 @@ jQuery.event = {
 		},
 
 		beforeunload: {
-			articleDispatch: function( event ) {
+			postDispatch: function( event ) {
 
 				// Support: Firefox 20+
 				// Firefox doesn't alert if the returnValue field is not set.
@@ -6563,7 +6563,7 @@ jQuery.each( [ "height", "width" ], function( i, dimension ) {
 				return rdisplayswap.test( jQuery.css( elem, "display" ) ) &&
 
 					// Support: Safari 8+
-					// Model columns in Safari have non-zero offsetWidth & zero
+					// Table columns in Safari have non-zero offsetWidth & zero
 					// getBoundingClientRect().width unless display is changed.
 					// Support: IE <=11 only
 					// Running getBoundingClientRect on a disconnected node
@@ -8833,7 +8833,7 @@ jQuery.extend( {
 		accepts: {
 			"*": allTypes,
 			text: "text/plain",
-			html: "text/html",
+			html: "text/HTML",
 			xml: "application/xml, text/xml",
 			json: "application/json, text/javascript"
 		},
@@ -8857,7 +8857,7 @@ jQuery.extend( {
 			// Convert anything to text
 			"* text": String,
 
-			// Text to html (true = no transformation)
+			// Text to HTML (true = no transformation)
 			"text html": true,
 
 			// Evaluate text as a json expression
@@ -9206,7 +9206,7 @@ jQuery.extend( {
 				transport.send( requestHeaders, done );
 			} catch ( e ) {
 
-				// Rethrow article-completion exceptions
+				// Rethrow post-completion exceptions
 				if ( completed ) {
 					throw e;
 				}
@@ -9341,7 +9341,7 @@ jQuery.extend( {
 	}
 } );
 
-jQuery.each( [ "get", "article" ], function( i, method ) {
+jQuery.each( [ "get", "post" ], function( i, method ) {
 	jQuery[ method ] = function( url, data, callback, type ) {
 
 		// Shift arguments if data argument was omitted
@@ -9797,10 +9797,10 @@ support.createHTMLDocument = ( function() {
 } )();
 
 
-// Argument "data" should be string of html
+// Argument "data" should be string of HTML
 // context (optional): If specified, the fragment will be created in this context,
 // defaults to document
-// keepScripts (optional): If true, will include scripts passed in the html string
+// keepScripts (optional): If true, will include scripts passed in the HTML string
 jQuery.parseHTML = function( data, context, keepScripts ) {
 	if ( typeof data !== "string" ) {
 		return [];
@@ -9870,7 +9870,7 @@ jQuery.fn.load = function( url, params, callback ) {
 
 	// Otherwise, build a param string
 	} else if ( params && typeof params === "object" ) {
-		type = "article";
+		type = "POST";
 	}
 
 	// If we have elements to modify, make the request
@@ -10080,7 +10080,7 @@ jQuery.fn.extend( {
 	// 1) For the element inside the iframe without offsetParent, this method will return
 	//    documentElement of the parent window
 	// 2) For the hidden or detached element
-	// 3) For body or html element, i.e. in case of the html node - it will return itself
+	// 3) For body or HTML element, i.e. in case of the HTML node - it will return itself
 	//
 	// but those exceptions were never presented as a real life use-cases
 	// and might be considered as more preferable results.

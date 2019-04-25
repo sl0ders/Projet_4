@@ -1,7 +1,5 @@
 <?php
 
-use Core\Auth\DBAuth;
-
 define('ROOT', dirname(__DIR__));
 require ROOT . '/app/App.php';
 App::load();

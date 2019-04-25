@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use \App;
-use Core\Auth\DBAuth;
+use App\Database\Auth\DBAuth;
 
 class AppController extends \App\Controller\AppController
 {
@@ -17,5 +17,4 @@ class AppController extends \App\Controller\AppController
             $this->forbidden();
         }
     }
-
 }

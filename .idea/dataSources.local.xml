@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="@localhost" uuid="0e066f39-af75-4c58-a206-7cbdf800c34a">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+    <data-source name="blog@localhost" uuid="cb937605-1f31-46d8-8cac-db04f6f94b94">
+      <database-info product="MySQL" version="5.7.24" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="5.7.24" exact-driver-version="8.0">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
+      <user-name>root</user-name>
+      <introspection-schemas>*:@</introspection-schemas>
+    </data-source>
+    <data-source name="@localhost" uuid="dd9e708e-e5f4-436b-9c57-71777aed6bcb">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>dbo756813991</user-name>
+    </data-source>
+    <data-source name="db756813991@db756813991.db.1and1.com" uuid="4df3592a-6bbf-4bc4-9a40-78988c3632c2">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>dbo756813991</user-name>
     </data-source>
   </component>
 </project>

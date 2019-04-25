@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use Core\Controller\Controller;
 use \App;
 class AppController extends Controller
 {
@@ -10,7 +9,7 @@ class AppController extends Controller
 
     public function __construct()
     {
-        $this->viewpath = ROOT . '/app/views/';
+        $this->viewpath = ROOT . '/app/Views/';
     }
 
     protected function loadModel($Model_name)

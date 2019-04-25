@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Core\Entity\Entity;
-
 class ChapterEntity extends Entity
 {
     public function getUrl()
