@@ -9,7 +9,7 @@ class AppController extends Controller
 
     public function __construct()
     {
-        $this->viewpath = ROOT . '/app/Views/';
+        $this->viewpath = ROOT . '/app/views/';
     }
 
     protected function loadModel($Model_name)

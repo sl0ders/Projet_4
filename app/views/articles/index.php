@@ -1,3 +1,4 @@
+<body id="index">
 <article>
     <div class="col-md-12">
         <div class="row">
@@ -43,3 +44,4 @@
         <br>
     <?php endforeach; ?>
 </article>
+</body>

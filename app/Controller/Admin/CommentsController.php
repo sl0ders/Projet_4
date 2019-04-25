@@ -4,7 +4,7 @@
 namespace App\Controller\Admin;
 
 use App;
-use App\Views\html\BootstrapForm;
+use App\views\HTML\BootstrapForm;
 
 class CommentsController extends AppController
 {

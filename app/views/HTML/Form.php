@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Views\HTML;
+namespace App\views\HTML;
 
 class Form
 {

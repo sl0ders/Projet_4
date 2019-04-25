@@ -15,7 +15,7 @@
 <?php } ?>
 
 <div class="responsive-table-line" style="margin:0 auto;max-width:95%;">
-    <table id="selectedColumn" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <table cellspacing="0" class="table table-bordered table-sm" id="selectedColumn" width="100%">
         <thead>
         <tr>
             <th class="th-sm">Numero de l'article</th>

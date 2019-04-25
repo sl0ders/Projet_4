@@ -6,21 +6,45 @@
 
 body {
     font-size: 20px;
-    color: #212529;
+    color: black;
     font-family: 'Lora', 'Times New Roman', serif;
+}
+
+body#login{
+    background-image:url("../img/login.jpg");
+    opacity: 0.2;
+    background-repeat: no-repeat; /*pas de répition de l'image*/
+    color: #000000;
+}
+
+body#login header.masthead, body#login.overlay{
+    display: none;
+}
+
+.login{
+    border: 2px solid black;
+    width: 500px;
+    height: auto;
+    padding: 100px;
+    margin-top: 250px;
+    background-color: rgba(103, 137, 181, 0.5);
+    text-align: center;
+    font-weight: 800;
 }
 
 p {
     line-height: 1.5;
     margin: 0 0;
-    color: #4e4852; font-family: 'Open Sans', Helvetica, sans-serif;
+    color: #4e4852;
+    font-family: 'Open Sans', Helvetica, sans-serif;
     font-size: 20px;
     letter-spacing: 1.5px;
     background-color: #ffffff;
 }
 
 p a {
-    color: #4e4852; font-family: 'Open Sans', Helvetica, sans-serif;
+    color: #4e4852;
+    font-family: 'Open Sans', Helvetica, sans-serif;
     font-size: 20px;
     letter-spacing: 1.5px;
     background-color: #ffffff;
@@ -444,6 +468,7 @@ footer .copyright {
         padding: 2px;
     }
 }
+
 .comment {
     border: 3px solid #b4bfc8;
     box-shadow: 8px 8px 0 #a2acb4;

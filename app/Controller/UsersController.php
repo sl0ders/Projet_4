@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App;
 use App\Database\Auth\DBAuth;
-use App\Views\html\BootstrapForm;
+use App\views\HTML\BootstrapForm;
 
 class UsersController extends AppController
 {

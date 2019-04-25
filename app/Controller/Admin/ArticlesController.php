@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use App;
-use App\Views\html\BootstrapForm;
+use App\views\HTML\BootstrapForm;
 
 class ArticlesController extends AppController
 {
@@ -51,8 +51,9 @@ class ArticlesController extends AppController
                     } else {
                         echo '<script type="text/javascript">' . 'alert("Erreur : Le numero de l\'article existe deja");' . '</script>';
                     }
+                } else {
+                    echo '<script type="text/javascript">' . 'alert("Erreur : Trop de contenu dans votre article");' . '</script>';
                 }
-                echo 'trop de caracteres dans le contenu de votre article';
             }
         }
         $this->loadModel('Chapter');
