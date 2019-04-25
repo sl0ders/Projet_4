@@ -44,4 +44,9 @@
     <?php endforeach; ?>
 
     <br>
+    <form method="post">
+        <?= $form->input('author', "Auteur du commentaire"); ?>
+        <?= $form->textarea('content', "Entrez votre commentaire") ?>
+        <button class="btn btn-primary">Sauvegarder</button>
+    </form>
 </article>
