@@ -19,4 +19,6 @@ class Comments extends AppController
         $comments = $this->Comment->getComments();
         $this->render('articles.index', compact('comments'));
     }
+
+
 }

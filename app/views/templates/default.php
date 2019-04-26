@@ -7,7 +7,8 @@
     <meta name="author" content="">
     <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=t8wsrw0o08y3nbn52u7y9sj2h0ec3r664cralpe9txjj4yhc"></script>
     <script>tinymce.init({
-            mode: "exact", elements: "active"});</script>
+            mode: "exact", elements: "active"
+        });</script>
     <title><?= App::getInstance()->title; ?></title>
 
     <!-- Bootstrap core CSS -->
@@ -62,7 +63,12 @@
             <div class="col-lg-9 col-md-10 mx-auto">
                 <div class="site-heading">
                     <h1>Billet simple pour l'Alaska</h1>
-                    <span class="subheading">Laissez moi vous raconter...</span>
+                    <?php if (isset($_GET['id'])){
+                        echo '<h3><span class="subheading">'. $article->title. '</span></h3>';
+                    } else {
+                    echo '<h3><span class="subheading">Laissez moi vous raconter...</span></h3>';
+                    }?>
+
                 </div>
             </div>
         </div>

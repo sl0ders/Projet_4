@@ -7,12 +7,13 @@
 body {
     font-size: 20px;
     color: black;
+    background-color: #fdf6ef;
     font-family: 'Lora', 'Times New Roman', serif;
 }
 
 body#login{
     background-image:url("../img/login.jpg");
-    opacity: 0.2;
+    filter: alpha(opacity=0.9);
     background-repeat: no-repeat; /*pas de répition de l'image*/
     color: #000000;
 }
@@ -27,9 +28,10 @@ body#login header.masthead, body#login.overlay{
     height: auto;
     padding: 100px;
     margin-top: 250px;
-    background-color: rgba(103, 137, 181, 0.5);
+    background-color: rgba(103, 137, 181, 0.8);
     text-align: center;
     font-weight: 800;
+    border-radius: 3px;
 }
 
 p {
@@ -39,15 +41,9 @@ p {
     font-family: 'Open Sans', Helvetica, sans-serif;
     font-size: 20px;
     letter-spacing: 1.5px;
-    background-color: #ffffff;
 }
 
 p a {
-    color: #4e4852;
-    font-family: 'Open Sans', Helvetica, sans-serif;
-    font-size: 20px;
-    letter-spacing: 1.5px;
-    background-color: #ffffff;
     text-decoration: underline;
 }
 

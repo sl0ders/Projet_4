@@ -2,10 +2,9 @@
 
 namespace App\Model;
 
-use App\Entity\articleEntity;
+use App\Entity\ArticleEntity;
 
-
-class articleModel extends Model
+class ArticleModel extends Model
 {
     protected $table = 'articles';
 
@@ -118,10 +117,12 @@ class articleModel extends Model
         ");
     }
 
+
     public function deleteArtCom($id)
     {
         $this->query('DELETE FROM comments WHERE article_id = ?', [$id]);
         $this->query('DELETE FROM articles WHERE id = ?', [$id]);
-
     }
+
+
 }

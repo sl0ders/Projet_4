@@ -39,7 +39,18 @@
     <?php foreach ($comments as $comment): ?>
         <div class="comment">
             <h5><?= $comment->author; ?><em> (<?= $comment->date_fr; ?>)</em> <?= $comment->article; ?></h5>
-            <p><?= $comment->content; ?></p>
+            <?php if ($comment->report === "1") {
+                echo ' <p style="color:red">Le commentaire a etait signalé</p>';
+            }else{ ?>
+                <p><?= $comment->content; ?></p>
+            <form method="post" action="index.php?p=articles.comReport&id=<?= $comment->id ?>">
+                <button type="submit" name="report"
+                        onclick="return confirm('Voulez-vous vraiment signaler ce commentaire?')"
+                        class="btn btn-danger btn-sm">Signaler
+                </button>
+            </form>
+            <?php } ?>
+
         </div>
         <br>
     <?php endforeach; ?>

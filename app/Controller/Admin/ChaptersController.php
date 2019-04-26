@@ -31,7 +31,8 @@ class ChaptersController extends AppController
                         'number' => htmlspecialchars($_POST['number'])
                     ]);
                     if ($result) {
-                        header('Location:index.php?p=admin.chapters.index');
+                        echo'<script>window.location="index.php?p=admin.articles.index";</script>';
+                        exit;
                     }
                 } else {
                     echo '<script type="text/javascript">' . 'alert("Erreur : Le numero de l\'article existe deja");' . '</script>';
@@ -54,7 +55,8 @@ class ChaptersController extends AppController
                         'number' => htmlspecialchars($_POST['number'])
                     ]);
                     if ($result) {
-                        header('Location:index.php?p=admin.chapters.index');
+                        echo'<script>window.location="index.php?p=admin.articles.index";</script>';
+                        exit;
                     }
                 } else {
                     echo '<script type="text/javascript">' . 'alert("Erreur : Le numero de l\'article existe deja");' . '</script>';

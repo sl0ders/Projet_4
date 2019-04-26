@@ -28,7 +28,7 @@ class ArticlesController extends AppController
     {
         if (!empty($_POST)) {
             if (!empty($_POST['number'])) {
-                if (strlen($_POST['content']) <= 10000) {
+                if (strlen($_POST['content']) <= 100000) {
                     $numberExist = $this->Article->numberExist($_POST['number']);
                     if ($numberExist === true) {
                         $post = $_POST['publish'];
@@ -46,7 +46,8 @@ class ArticlesController extends AppController
                                 'number' => htmlspecialchars($_POST['number'])
                             ]);
                         if ($result) {
-                            header('Location:index.php?p=admin.articles.index');
+                           echo'<script>window.location="index.php?p=admin.articles.index";</script>';
+                            exit;
                         }
                     } else {
                         echo '<script type="text/javascript">' . 'alert("Erreur : Le numero de l\'article existe deja");' . '</script>';
@@ -78,7 +79,8 @@ class ArticlesController extends AppController
                 'publish' => htmlspecialchars($_POST['publish']),
             ]);
             if ($result) {
-                header('Location:index.php?p=admin.articles.index');
+                echo'<script>window.location="index.php?p=admin.articles.index";</script>';
+                exit;
             }
         }
         $this->Article->idExist($_GET['id']);

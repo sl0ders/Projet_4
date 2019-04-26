@@ -22,7 +22,8 @@ class UsersController extends AppController
                 'hash' => htmlspecialchars(password_hash($_POST['password'], PASSWORD_DEFAULT))
             ]);
             if ($result) {
-                header('Location: index?p=users.login');
+                echo'<script>window.location="index.php?p=users.login";</script>';
+                exit;
             }
         }
         $form = new BootstrapForm($_POST);
@@ -37,7 +38,8 @@ class UsersController extends AppController
         if (!empty($_POST)) {
             $auth = new DBAuth(App::getInstance()->getDb());
             if ($auth->login(htmlspecialchars($_POST['username']), htmlspecialchars($_POST['password']))) {
-                header('location: index.php?p=admin.articles.index');
+                echo'<script>window.location="index.php?p=admin.articles.index";</script>';
+                exit;
             } else {
                 $errors = true;
             }
@@ -49,6 +51,7 @@ class UsersController extends AppController
     public function disconnect()
     {
         session_destroy();
-        header('Location: index.php');
+        echo '<script type="text/javascript">window.location="index.php?p=articles.index";</script>';
+        exit;
     }
 }

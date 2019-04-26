@@ -30,4 +30,18 @@ class CommentsController extends AppController
         return $this->index();
     }
 
+    public function comUnreport()
+    {
+        if ($_GET['id'])
+            $this->Comment->updateReportDown($_GET['id']);
+        return $this->index();
+    }
+
+    public function comReport()
+    {
+        if ($_GET['id'])
+            $this->Comment->updateReportUp($_GET['id']);
+        return $this->index();
+    }
+
 }

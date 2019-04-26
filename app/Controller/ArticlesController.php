@@ -6,8 +6,11 @@ namespace App\Controller;
 use App\views\HTML\BootstrapForm;
 
 
-class articlesController extends AppController
+class ArticlesController extends AppController
 {
+    protected $errorSizeMax = '<script type="text/javascript">' . 'alert("Erreur : La taille maximum de caractere a etait depassé");' . '</script>';
+    protected $errorSizeMin = '<script type="text/javascript">' . 'alert("Erreur : Il vous faut entrer au moin 3 caractere");' . '</script>';
+
     public function __construct()
     {
         parent::__construct();
@@ -25,7 +28,8 @@ class articlesController extends AppController
         $this->render('articles.index', compact('articles', 'comments', 'chapters', 'form'));
     }
 
-    public function chapter()
+    public
+    function chapter()
     {
         $chapters = $this->Chapter->all();
         if ($chapters === false) {
@@ -38,24 +42,36 @@ class articlesController extends AppController
     public function show()
     {
         if (!empty($_POST)) {
-            if (strlen($_POST["content"]) <= 100) {
+            if ((strlen($_POST["content"]) >= 500) || (strlen($_POST["author"]) >= 500)) {
+                echo $this->errorSizeMax;
+            } elseif ((strlen($_POST["content"]) <= 0) || (strlen($_POST["author"]) <= 3)) {
+                echo $this->errorSizeMin;
+            } else {
                 $result = $this->Comment->create([
                     'article_id' => htmlspecialchars($_GET['id']),
                     'author' => htmlspecialchars($_POST['author']),
                     'content' => $_POST['content']
                 ]);
+
                 if ($result) {
-                    header('Location:index.php?p=articles.index');
+                    echo '<script type="text/javascript">window.location="index.php?p=articles.index";</script>';
+                    exit;
                 }
-            }  else {
-                echo '<script type="text/javascript">' . 'alert("Erreur : Un maximume de 100 caracteres est autorisé");' . '</script>';
             }
         }
-            $this->Article->idExist($_GET['id']);
-            $article = $this->Article->findWithChapter($_GET['id']);
-            $comments = $this->Comment->getComment($_GET['id']);
-            $form = new BootstrapForm($_POST);
-            $this->render('articles.show', compact('comments', 'article', 'form'));
+        $this->Article->idExist($_GET['id']);
+        $article = $this->Article->findWithChapter($_GET['id']);
+        $comments = $this->Comment->getComment($_GET['id']);
+        $form = new BootstrapForm($_POST);
+        $this->render('articles.show', compact('comments', 'article', 'form'));
 
     }
+
+    public function comReport()
+    {
+        if ($_GET['id'])
+            $this->Comment->updateReportUp($_GET['id']);
+        return $this->index();
+    }
+
 }

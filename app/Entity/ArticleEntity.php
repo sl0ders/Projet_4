@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 
-class articleEntity extends Entity
+class ArticleEntity extends Entity
 {
     public function getUrl()
     {
@@ -12,7 +12,7 @@ class articleEntity extends Entity
 
     public function getExtract()
     {
-        $html = '<p>' . substr($this->content, 0, 300) . '...</p>';
+        $html = '<p>' . substr($this->content, 0, 200) . '...</p>';
         $html .= '<p><a href="' . $this->getUrl() . '">voir la suite</a></p>';
         return $html;
     }
@@ -24,7 +24,7 @@ class articleEntity extends Entity
 
     public function getExtractForAdmin()
     {
-        $html = '<p>' . substr($this->content, 0, 70) . '...</p>';
+        $html = '<p>' . substr($this->content, 0, 200) . '...</p>';
         $html .= '<p><a href="' . $this->getUrlForAdmin() . '">voir la suite</a></p>';
         return $html;
     }
