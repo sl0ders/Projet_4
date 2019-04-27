@@ -464,7 +464,11 @@ footer .copyright {
         padding: 2px;
     }
 }
-
+.article{
+    border: 2px solid #0c5460;
+    padding-bottom: 40px;
+    box-shadow: 8px 8px 0 #4e555b;
+}
 .comment {
     border: 3px solid #b4bfc8;
     box-shadow: 8px 8px 0 #a2acb4;

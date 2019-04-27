@@ -87,18 +87,12 @@ class ArticlesController extends AppController
                 echo '<script>window.location="index.php?p=admin.articles.edit&id=' .$_GET['id'] . '";</script>';
                 exit;
             }
-            $numberExist = $this->Article->numberExist($_POST['number']);
-            if ($numberExist === false) {
-                echo $this->numberExist;
-                echo '<script>window.location="index.php?p=admin.articles.edit&id=' .$_GET['id'] . '";</script>';
-                exit;
-            }
+            
             $result = $this->Article->update($_GET['id'],[
                 'title' => htmlspecialchars($_POST['title']),
                 'content' => $_POST['content'],
                 'chapter_id' => htmlspecialchars($_POST['chapter_id']),
-                'publish' => htmlspecialchars($_POST['publish']),
-                'number' => htmlspecialchars($_POST['number'])
+                'publish' => htmlspecialchars($_POST['publish'])
             ]);
             if ($result) {
                 echo '<script>window.location="index.php?p=admin.articles.index";</script>';
@@ -108,7 +102,7 @@ class ArticlesController extends AppController
         $this->Article->idExist($_GET['id']);
         $article = $this->Article->find($_GET['id']);
         $articles = $this->Article->allArticles();
-        $chaptersXtract = $this->Chapter->extract('number', 'title', 'content');
+        $chaptersXtract = $this->Chapter->extract('id', 'title', 'content');
         $chapters = $this->Chapter->allChapters();
         $form = new BootstrapForm($article);
         $this->render('admin.articles.edit', compact('chapters','articles', 'chaptersXtract', 'form'));

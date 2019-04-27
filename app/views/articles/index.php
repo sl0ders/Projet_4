@@ -1,8 +1,14 @@
+
+<div class="col-md-12 d-md-inline">
+    <?php foreach ($chapters as $chapter): ?>
+        <li><?= $chapter->number ?> - <a href="<?= $chapter->url; ?>"><?= $chapter->title; ?></a></li>
+    <?php endforeach; ?>
+</div>
 <article>
-    <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-8">
-                <?php foreach ($articles as $article): ?>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <?php foreach ($articles as $article): ?>
+                <div class="article">
                     <h3 class="section-heading">
                         <?= $article->title; ?>
                     </h3>
@@ -19,16 +25,12 @@
                             <?= $article->nb_com ?> Commentaires
                         </em>
                     </a>
-                    <br> <br>
-                <?php endforeach; ?>
-            </div>
+                </div>
+                <br> <br>
 
-            <div class="col-md-4">
-                <?php foreach ($chapters as $chapter): ?>
-                    <li><?= $chapter->number ?> - <a href="<?= $chapter->url; ?>"><?= $chapter->title; ?></a></li>
-                <?php endforeach; ?>
-            </div>
+            <?php endforeach; ?>
         </div>
+    </div>
 </article>
 <br>
 <article>
@@ -40,14 +42,14 @@
             <h5><?= $comment->author; ?><em> (<?= $comment->date_fr; ?>)</em> <?= $comment->article; ?></h5>
             <?php if ($comment->report === "1") {
                 echo ' <p style="color:red">Le commentaire a etait signalé</p>';
-            }else{ ?>
+            } else { ?>
                 <p><?= $comment->content; ?></p>
-            <form method="post" action="index.php?p=articles.comReport&id=<?= $comment->id ?>">
-                <button type="submit" name="report"
-                        onclick="return confirm('Voulez-vous vraiment signaler ce commentaire?')"
-                        class="btn btn-danger btn-sm">Signaler
-                </button>
-            </form>
+                <form method="post" action="index.php?p=articles.comReport&id=<?= $comment->id ?>">
+                    <button type="submit" name="report"
+                            onclick="return confirm('Voulez-vous vraiment signaler ce commentaire?')"
+                            class="btn btn-danger btn-sm">Signaler
+                    </button>
+                </form>
             <?php } ?>
 
         </div>
