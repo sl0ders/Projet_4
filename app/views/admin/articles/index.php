@@ -16,25 +16,25 @@
 <?php } ?>
 
 <div class="responsive-table-line" style="margin:0 auto;max-width:99%;">
-    <table cellspacing="0" class="table table-bordered table-md" id="selectedColumn" width="100%">
+    <table cellspacing="0" id="usersTable" class="w3-table-all table table-bordered table-sm" width="100%">
         <thead class="text-center">
         <tr>
-            <th class="th-md">Numero de l'article</th>
-            <th class="th-md">Titre</th>
-            <th class="th-md">Chapitre n°</th>
-            <th class="th-md">Extrait</th>
-            <th class="th-md">Action</th>
-            <th class="th-md">Date Modif</th>
-            <th class="th-md">Nb° commentaires</th>
-            <th class="th-md">Etat de publication</th>
+            <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(1)')" style="cursor:pointer"><i class="fas fa-arrows-alt-v"></i> Numero de l'article</th>
+            <th>Titre</th>
+            <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(1)')" style="cursor:pointer"><i class="fas fa-arrows-alt-v"></i> Chapitre n°</th>
+            <th>Extrait</th>
+            <th>Action</th>
+            <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(1)')" style="cursor:pointer"><i class="fas fa-arrows-alt-v"></i> Date Modif</th>
+            <th>Nb° commentaires</th>
+            <th>Etat de publication</th>
         </tr>
         </thead>
         <tbody class="text-center">
         <?php foreach ($articles as $article) : ?>
-            <tr>
-                <td>N° : <?= $article->number; ?></td>
+            <tr class="item">
+                <td><?= $article->number; ?></td>
                 <td>Titre : <?= $article->title; ?></td>
-                <td>Chapitre : <?= $article->chapterNumber; ?></td>
+                <td><?= $article->chapterNumber; ?></td>
                 <td>Extrait : <?= $article->extractForAdmin; ?></td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="?p=admin.articles.edit&id=<?= $article->id; ?>">Editer</a>
@@ -46,7 +46,7 @@
                         </button>
                     </form>
                 </td>
-                <td>le <?= $article->date_fr; ?></td>
+                <td><?= $article->date_fr;?></td>
                 <td>
                     <a href="index.php?p=admin.comments.index">
                         <?= $article->nb_com ?>
@@ -64,13 +64,8 @@
         </tbody>
     </Table>
 </div>
-<div class="class= responsive-table-line">
-    <h3>chapitre</h3>
-    <?php foreach ($chapters as $chapter) : ?>
-        <ul>
-            <li><?= $chapter->number ?> - <?= $chapter->title ?></li>
-        </ul>
-    <?php endforeach; ?></div>
+
+
 </body>
 
 

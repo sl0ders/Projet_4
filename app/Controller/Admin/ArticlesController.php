@@ -27,40 +27,45 @@ class ArticlesController extends AppController
     public function add()
     {
         if (!empty($_POST)) {
-            if (!empty($_POST['number'])) {
-                if (strlen($_POST['content']) <= 100000) {
-                    $numberExist = $this->Article->numberExist($_POST['number']);
-                    if ($numberExist === true) {
-                        $post = $_POST['publish'];
-                        if ($post === 'on') {
-                            $_POST['publish'] = 1;
-                        } else {
-                            $_POST['publish'] = 0;
-                        }
-                        $result =
-                            $this->Article->create([
-                                'title' => htmlspecialchars($_POST['title']),
-                                'content' => $_POST['content'],
-                                'chapter_id' => htmlspecialchars($_POST['chapter_id']),
-                                'publish' => htmlspecialchars($_POST['publish']),
-                                'number' => htmlspecialchars($_POST['number'])
-                            ]);
-                        if ($result) {
-                           echo'<script>window.location="index.php?p=admin.articles.index";</script>';
-                            exit;
-                        }
-                    } else {
-                        echo '<script type="text/javascript">' . 'alert("Erreur : Le numero de l\'article existe deja");' . '</script>';
-                    }
-                } else {
-                    echo '<script type="text/javascript">' . 'alert("Erreur : Trop de contenu dans votre article");' . '</script>';
-                }
+            $post = $_POST['publish'];
+            if ($post === 'on') {
+                $_POST['publish'] = 1;
+            } else {
+                $_POST['publish'] = 0;
+            }
+            if ((empty($_POST['number'])) || (empty($_POST['title'])) || (empty($_POST['content']))) {
+                echo $this->missCase;
+                echo '<script>window.location="index.php?p=admin.articles.add";</script>';
+
+            }
+            if ((strlen($_POST['content']) >= 100000) || (strlen($_POST['title']) >= 255)) {
+                echo $this->errorSizeMax;
+                echo '<script>window.location="index.php?p=admin.articles.add";</script>';
+
+            }
+            $numberExist = $this->Article->numberExist($_POST['number']);
+            if ($numberExist === false) {
+                echo $this->numberExist;
+                echo '<script>window.location="index.php?p=admin.articles.add"</script>';
+                exit;
+            }
+            $result = $this->Article->create([
+                'title' => htmlspecialchars($_POST['title']),
+                'content' => $_POST['content'],
+                'chapter_id' => htmlspecialchars($_POST['chapter_id']),
+                'publish' => htmlspecialchars($_POST['publish']),
+                'number' => htmlspecialchars($_POST['number'])
+            ]);
+            if ($result) {
+                echo '<script>window.location="index.php?p=admin.chapters.index";</script>';
+                exit;
             }
         }
         $this->loadModel('Chapter');
+        $articles = $this->Article->allArticles();
         $chapters = $this->Chapter->extract('id', 'title', 'content');
         $form = new BootstrapForm($_POST);
-        $this->render('admin.articles.add', compact('chapters', 'form'));
+        $this->render('admin.articles.add', compact('articles', 'chapters', 'form'));
     }
 
     public function edit()
@@ -72,22 +77,40 @@ class ArticlesController extends AppController
             } else {
                 $_POST['publish'] = 0;
             }
+            if ((empty($_POST['title'])) || (empty($_POST['content']))) {
+                echo $this->missCase;
+                echo '<script>window.location="index.php?p=admin.articles.edit&id=' .$_GET['id'] . '";</script>';
+                exit;
+            }
+            if ((strlen($_POST['content']) >= 100000) || (strlen($_POST['title']) >= 50)) {
+                echo $this->errorSizeMax;
+                echo '<script>window.location="index.php?p=admin.articles.edit&id=' .$_GET['id'] . '";</script>';
+                exit;
+            }
+            $numberExist = $this->Article->numberExist($_POST['number']);
+            if ($numberExist === false) {
+                echo $this->numberExist;
+                echo '<script>window.location="index.php?p=admin.articles.edit"</script>';
+                exit;
+            }
             $result = $this->Article->update($_GET['id'], [
                 'title' => htmlspecialchars($_POST['title']),
                 'content' => $_POST['content'],
                 'chapter_id' => htmlspecialchars($_POST['chapter_id']),
                 'publish' => htmlspecialchars($_POST['publish']),
+                'number' => htmlspecialchars($_POST['number'])
             ]);
             if ($result) {
-                echo'<script>window.location="index.php?p=admin.articles.index";</script>';
+                echo '<script>window.location="index.php?p=admin.articles.index";</script>';
                 exit;
             }
         }
         $this->Article->idExist($_GET['id']);
         $article = $this->Article->find($_GET['id']);
+        $articles = $this->Article->allArticles();
         $chapters = $this->Chapter->extract('id', 'title');
         $form = new BootstrapForm($article);
-        $this->render('admin.articles.edit', compact('chapters', 'form'));
+        $this->render('admin.articles.edit', compact('articles', 'chapters', 'form'));
     }
 
     public function delete()

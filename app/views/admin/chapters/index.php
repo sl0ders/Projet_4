@@ -3,11 +3,9 @@ index:
  une seule variables envoyé sur admin.chapter.index:
  chapters => all() renvoie tout les element de la table catagories
 -->
-<div class="col-md-5 offset-7">
-    <p>
+<div class="col-md-5 offset-md-9">
         <a href="?p=admin.articles.index" class="btn btn-warning btn-sm">Gestion des articles</a>
         <a href="?p=admin.comments.index" class="btn btn-warning btn-sm">Gestion des commentaires</a>
-    </p>
 </div>
 <h1>Gestion des Chapitres</h1>
 <a href="?p=admin.chapters.add" class="btn btn-success">Ajouter un chapitre</a>

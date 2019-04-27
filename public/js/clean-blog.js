@@ -38,25 +38,10 @@
             });
     }
 
-    jQuery(document).ready(function($){
-
-        $('.reply').click(function(e){
-            e.preventDefault();
-            let $form = $('.form-commentaire');
-            let $this = $(this);
-            let parent_id = $this.data('id');
-            let $comment = $('#commentaire-' + parent_id);
-            console.log(parent_id);
-
-            $form.find('h3').text('Répondre à ce commentaire');
-            $('#parent_id').val(parent_id);
-            $form.hide();
-            $comment.after($form);
-            $form.slideDown();
-        })
+    $(document).ready(function () {
+        $('#dtBasicExample').DataTable();
+        $('.dataTables_length').addClass('bs-select');
     });
-
-
 
 })(jQuery); // End of use strict
 

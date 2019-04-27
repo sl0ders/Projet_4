@@ -10,10 +10,10 @@ ChapterModel extends Model
     public function allChapters()
     {
         return $this->query("
-            SELECT Chapters.title,Chapters.number, articles.title as article
-            FROM Chapters
+            SELECT chapters.title,chapters.number, articles.title as article
+            FROM chapters
             LEFT JOIN articles ON articles_id = articles.id
-            ORDER BY Chapters.number DESC");
+            ORDER BY chapters.number DESC");
     }
 
     public function idExist($id)
@@ -21,6 +21,21 @@ ChapterModel extends Model
         $exist = $this->query("SELECT chapters.id FROM chapters WHERE id = ?", [$id]);
         if (empty($exist)) {
             return $this->notFound();
+        }
+    }
+
+    public function numberExist($number)
+    {
+        $exist = $this->query("
+            SELECT EXISTS(
+                SELECT chapters.number 
+                FROM chapters 
+                WHERE chapters.number = ?) AS numberExist",
+            [$number], true);
+        if ($exist->numberExist > 0) {
+            return false;
+        } else {
+            return true;
         }
     }
 }

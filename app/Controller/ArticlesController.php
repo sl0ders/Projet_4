@@ -44,7 +44,8 @@ class ArticlesController extends AppController
         if (!empty($_POST)) {
             if ((strlen($_POST["content"]) >= 500) || (strlen($_POST["author"]) >= 500)) {
                 echo $this->errorSizeMax;
-            } elseif ((strlen($_POST["content"]) <= 0) || (strlen($_POST["author"]) <= 3)) {
+            }
+            if ((strlen($_POST["content"]) <= 0) || (strlen($_POST["author"]) <= 3)) {
                 echo $this->errorSizeMin;
             } else {
                 $result = $this->Comment->create([

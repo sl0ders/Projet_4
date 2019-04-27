@@ -13,5 +13,11 @@ chapters => extract() renvoie l'id et le title de la table catagories
     <?= $form->checkbox('Publier', 'publish');?>
     <button class="btn btn-primary">Sauvegarder</button>
 </form>
+<br><br>
+<?php foreach($articles as $article): ?>
+    <ul>
+        <li><?= $article->number?> - <?= $article->title;?></li>
+    </ul>
+<?php endforeach; ?>
 
 

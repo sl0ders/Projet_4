@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet" />
     <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=t8wsrw0o08y3nbn52u7y9sj2h0ec3r664cralpe9txjj4yhc"></script>
     <script>tinymce.init({
             mode: "exact", elements: "active"
@@ -88,9 +90,8 @@
 
 <!-- Footer -->
 <footer>
-    <div class="container" style="filter:alpha(opacity=50); opacity:0.5;>
-        <div class=" row
-    ">
+    <div class="container" style="filter:alpha(opacity=50); opacity:0.5;">
+        <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
         <ul class="list-inline text-center">
             <li class="list-inline-item">

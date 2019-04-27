@@ -23,10 +23,10 @@ class ArticleModel extends Model
     public function allArticles()
     {
         return $this->query("
-            SELECT articles.id,articles.title,articles.content, DATE_FORMAT(articles.date,'%d/%m/%Y à %Hh%imin') AS date_fr, articles.title, chapters.title as Chapter
+            SELECT articles.id,articles.number,articles.title,articles.content, DATE_FORMAT(articles.date,'%d/%m/%Y à %Hh%imin') AS date_fr, articles.title, chapters.title as Chapter
             FROM articles
             LEFT JOIN chapters ON chapter_id = chapters.number
-            ORDER BY articles.date DESC");
+            ORDER BY articles.number");
     }
 
     public function numberExist($number)
