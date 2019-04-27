@@ -51,7 +51,7 @@ class ArticlesController extends AppController
                 $result = $this->Comment->create([
                     'article_id' => htmlspecialchars($_GET['id']),
                     'author' => htmlspecialchars($_POST['author']),
-                    'content' => $_POST['content']
+                    'content' => htmlspecialchars($_POST['content'])
                 ]);
 
                 if ($result) {

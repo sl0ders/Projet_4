@@ -57,7 +57,7 @@ class ArticlesController extends AppController
                 'number' => htmlspecialchars($_POST['number'])
             ]);
             if ($result) {
-                echo '<script>window.location="index.php?p=admin.chapters.index";</script>';
+                echo '<script>window.location="index.php?p=admin.articles.index";</script>';
                 exit;
             }
         }
@@ -90,10 +90,10 @@ class ArticlesController extends AppController
             $numberExist = $this->Article->numberExist($_POST['number']);
             if ($numberExist === false) {
                 echo $this->numberExist;
-                echo '<script>window.location="index.php?p=admin.articles.edit"</script>';
+                echo '<script>window.location="index.php?p=admin.articles.edit&id=' .$_GET['id'] . '";</script>';
                 exit;
             }
-            $result = $this->Article->update($_GET['id'], [
+            $result = $this->Article->update($_GET['id'],[
                 'title' => htmlspecialchars($_POST['title']),
                 'content' => $_POST['content'],
                 'chapter_id' => htmlspecialchars($_POST['chapter_id']),
@@ -108,9 +108,10 @@ class ArticlesController extends AppController
         $this->Article->idExist($_GET['id']);
         $article = $this->Article->find($_GET['id']);
         $articles = $this->Article->allArticles();
-        $chapters = $this->Chapter->extract('id', 'title');
+        $chaptersXtract = $this->Chapter->extract('number', 'title', 'content');
+        $chapters = $this->Chapter->allChapters();
         $form = new BootstrapForm($article);
-        $this->render('admin.articles.edit', compact('articles', 'chapters', 'form'));
+        $this->render('admin.articles.edit', compact('chapters','articles', 'chaptersXtract', 'form'));
     }
 
     public function delete()

@@ -3,7 +3,7 @@ index:
 une seule variables envoyé sur admin.comments.index:
 $comments => all() : renvoie tout les elements de la table comments
 -->
-<div class="col-md-5 offset-md-9">
+<div class="table-hover col-md-5 offset-md-9">
         <a href="?p=admin.chapters.index" class="btn btn-warning btn-sm">Gestion des chapitres</a>
         <a href="?p=admin.articles.index" class="btn btn-warning btn-sm">Gestion des articles</a>
 </div>

@@ -16,15 +16,21 @@
 <?php } ?>
 
 <div class="responsive-table-line" style="margin:0 auto;max-width:99%;">
-    <table cellspacing="0" id="usersTable" class="w3-table-all table table-bordered table-sm" width="100%">
+    <table cellspacing="0" id="usersTable" class="table-hover w3-table-all table table-bordered table-sm" width="100%">
         <thead class="text-center">
         <tr>
-            <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(1)')" style="cursor:pointer"><i class="fas fa-arrows-alt-v"></i> Numero de l'article</th>
+            <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(1)')" style="cursor:pointer"><i
+                        class="fas fa-arrows-alt-v"></i> Numero de l'article
+            </th>
             <th>Titre</th>
-            <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(1)')" style="cursor:pointer"><i class="fas fa-arrows-alt-v"></i> Chapitre n°</th>
+            <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(1)')" style="cursor:pointer"><i
+                        class="fas fa-arrows-alt-v"></i> Chapitre n°
+            </th>
             <th>Extrait</th>
             <th>Action</th>
-            <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(1)')" style="cursor:pointer"><i class="fas fa-arrows-alt-v"></i> Date Modif</th>
+            <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(1)')" style="cursor:pointer"><i
+                        class="fas fa-arrows-alt-v"></i> Date création
+            </th>
             <th>Nb° commentaires</th>
             <th>Etat de publication</th>
         </tr>
@@ -46,7 +52,7 @@
                         </button>
                     </form>
                 </td>
-                <td><?= $article->date_fr;?></td>
+                <td><?= $article->date_fr; ?></td>
                 <td>
                     <a href="index.php?p=admin.comments.index">
                         <?= $article->nb_com ?>

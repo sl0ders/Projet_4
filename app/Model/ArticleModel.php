@@ -95,7 +95,7 @@ class ArticleModel extends Model
                     chapters.number as chapterNumber
             FROM articles 
             LEFT JOIN chapters ON chapter_id = chapters.id
-            group by articles.id ORDER BY articles.id DESC
+            group by articles.id ORDER BY articles.number
             ");
     }
 
