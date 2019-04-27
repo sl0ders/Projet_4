@@ -9,22 +9,17 @@
         <div class="col-md-12 text-center">
             <?php foreach ($articles as $article): ?>
                 <div class="article">
-                    <h3 class="section-heading">
-                        <?= $article->title; ?>
-                    </h3>
+                    <h3 class="section-heading"><?= $article->title; ?></h3>
+                    <p><?= $article->extract; ?></p>
+                    <br>
                     <p>
-                        <?= $article->extract; ?>
+                        <em>Chapitre <b><?= $article->chapterNumber ?> - <?= $article->Chapter; ?></b></em>
                     </p>
-                    <p>
-                        <em>
-                            Chapitre <b><?= $article->chapterNumber ?> - <?= $article->Chapter; ?></b>
-                        </em>
-                    </p>
+                    <br>
                     <a href="<?= $article->url ?>">
-                        <em>
-                            <?= $article->nb_com ?> Commentaires
-                        </em>
+                        <em><?= $article->nb_com ?> Commentaires</em>
                     </a>
+                    <div style="text-align: right; margin-right: 20px"><em><?= $article->date_fr ?></em></div>
                 </div>
                 <br> <br>
 

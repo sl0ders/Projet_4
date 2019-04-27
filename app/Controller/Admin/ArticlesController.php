@@ -18,7 +18,7 @@ class ArticlesController extends AppController
 
     public function index()
     {
-        $articles = $this->Article->countCommentsForArticle();
+        $articles = $this->Article->AllArticlesByDate();
         $chapters = $this->Chapter->all();
         $form = new BootstrapForm($_POST);
         $this->render('admin.articles.index', compact('articles', 'chapters', 'form'));
@@ -87,7 +87,7 @@ class ArticlesController extends AppController
                 echo '<script>window.location="index.php?p=admin.articles.edit&id=' .$_GET['id'] . '";</script>';
                 exit;
             }
-            
+
             $result = $this->Article->update($_GET['id'],[
                 'title' => htmlspecialchars($_POST['title']),
                 'content' => $_POST['content'],

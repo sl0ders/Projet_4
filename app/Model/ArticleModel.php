@@ -99,6 +99,21 @@ class ArticleModel extends Model
             ");
     }
 
+    public function allArticlesByDate()
+    {
+        return $this->query("
+        SELECT articles.number, articles.id, articles.publish,articles.title,articles.content, DATE_FORMAT(articles.date,'%d/%m/%Y à %Hh%imin') AS date_fr,
+        (SELECT count(*) 
+                    FROM comments 
+                    WHERE comments.article_id = articles.id) AS nb_com,
+                    chapters.title as Chapter,  
+                    chapters.number as chapterNumber
+            FROM articles 
+            LEFT JOIN chapters ON chapter_id = chapters.id
+            group by articles.id ORDER BY articles.date DESC
+        ");
+    }
+
     public function checked()
     {
         return $this->query("
