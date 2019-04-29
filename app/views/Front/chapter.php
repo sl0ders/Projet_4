@@ -7,13 +7,12 @@
 <div class="row">
     <div class="col-sm-8">
         <ul>
-            <?php
-            foreach ($articles as $article): ?>
+            <?php foreach ($articles as $article): ?>
                 <h1><?= $article->title; ?></a></h1>
                 <p><em><?= $article->chapter; ?></em></p>
                 <p><?= $article->extract; ?> </p>
-            <a href="<?= $article->url ?>"><?= $article->nb_com ?> commentaires</a>
-            <br>
+            <a href="<?= $article->url ?>"><?= $article->nb_com ?> commentaire<?php if($article->nb_com > 1){echo 's';}?></a>
+            <br><br>
             <?php endforeach; ?>
         </ul>
     </div>

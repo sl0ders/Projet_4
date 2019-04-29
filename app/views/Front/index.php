@@ -1,5 +1,6 @@
 
-<div class="col-md-12 d-md-inline">
+<div class="col-md-12 d-md-inline text-center">
+    <h2>Les chapitres</h2>
     <?php foreach ($chapters as $chapter): ?>
         <li><?= $chapter->number ?> - <a href="<?= $chapter->url; ?>"><?= $chapter->title; ?></a></li>
     <?php endforeach; ?>
@@ -17,7 +18,7 @@
                     </p>
                     <br>
                     <a href="<?= $article->url ?>">
-                        <em><?= $article->nb_com ?> Commentaires</em>
+                        <em><?= $article->nb_com ?> Commentaire<?php if($article->nb_com > 1){echo's';}?></em>
                     </a>
                     <div style="text-align: right; margin-right: 20px"><em><?= $article->date_fr ?></em></div>
                 </div>
@@ -35,11 +36,11 @@
     <?php foreach ($comments as $comment): ?>
         <div class="comment">
             <h5><?= $comment->author; ?><em> (<?= $comment->date_fr; ?>)</em> <?= $comment->article; ?></h5>
-            <?php if ($comment->report === "1") {
+            <?php if ($comment->report >= "1") {
                 echo ' <p style="color:red">Le commentaire a etait signalé</p>';
             } else { ?>
                 <p><?= $comment->content; ?></p>
-                <form method="post" action="index.php?p=articles.comReport&id=<?= $comment->id ?>">
+                <form method="post" action="index.php?p=Front.articles.comReport&id=<?= $comment->id ?>">
                     <button type="submit" name="report"
                             onclick="return confirm('Voulez-vous vraiment signaler ce commentaire?')"
                             class="btn btn-danger btn-sm">Signaler
