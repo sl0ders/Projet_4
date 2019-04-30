@@ -5,7 +5,7 @@ namespace App\Controller\Admin;
 use \App;
 use App\Database\Auth\DBAuth;
 
-class AppController extends \App\Controller\AppController
+class AppController extends \App\Controller\Front\AppController
 {
     protected $errorSizeMax = '<script type="text/javascript">' . 'alert("Erreur : La taille maximum de caractere a etait depassé");' . '</script>';
     protected $errorSizeMin = '<script type="text/javascript">' . 'alert("Erreur : Il vous faut entrer au moin 3 caractere");' . '</script>';

@@ -13,8 +13,8 @@ body {
 
 body#login{
     background-image:url("../img/login.jpg");
+    background-repeat: repeat-y;
     filter: alpha(opacity=0.9);
-    background-repeat: no-repeat; /*pas de répition de l'image*/
     color: #000000;
 }
 
@@ -27,6 +27,8 @@ body#login header.masthead, body#login.overlay{
     width: 500px;
     height: auto;
     padding: 100px;
+    margin-left:auto;
+    margin-right:auto;
     margin-top: 250px;
     background-color: rgba(103, 137, 181, 0.8);
     text-align: center;
@@ -81,6 +83,10 @@ blockquote {
     font-size: 36px;
     font-weight: 700;
     margin: 40px;
+}
+
+table{
+    max-width: 90%!important;
 }
 
 .caption {
