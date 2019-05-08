@@ -16,7 +16,7 @@
 <?php } ?>
 
 <div class="responsive-table-line" style="margin:0 auto;max-width:99%;">
-    <table cellspacing="0" id="usersTable" class="table-hover w3-table-all table table-bordered table-sm" width="100%">
+    <table cellspacing="0" id="usersTable" class="table-articles table-hover w3-table-all table table-bordered table-sm" width="100%">
         <thead class="text-center">
         <tr>
             <th onclick="w3.sortHTML('#usersTable', '.item', 'td:nth-child(1)')" style="cursor:pointer"><i

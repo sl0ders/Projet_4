@@ -12,7 +12,7 @@ index:
 <br>
 <br>
 <div class="responsive-table-line" style="margin:0 auto;max-width:90%;">
-    <table class="table-hover table table-bordered table-condensed table-body-center">
+    <table class="table-hover table table-bordered table-condensed table-body-center table-chapters">
         <thead class="text-center">
         <tr>
             <th>Numero du chapitre</th>

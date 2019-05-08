@@ -10,7 +10,7 @@ $comments => all() : renvoie tout les elements de la table comments
 
 <h1>Gestion des commentaires</h1>
 <div class="responsive-table-line" style="margin:0 auto;max-width:90%;">
-    <table class="table table-bordered table-condensed table-body-center">
+    <table class="table table-bordered table-condensed table-body-center table-comments">
         <thead class="text-center">
         <tr>
             <th>Auteur</th>

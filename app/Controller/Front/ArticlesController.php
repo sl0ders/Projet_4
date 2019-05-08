@@ -12,12 +12,12 @@ class ArticlesController extends AppController
     protected $errorSizeMin = '<script type="text/javascript">' . 'alert("Erreur : Il vous faut entrer au moin 3 caractere");' . '</script>';
 
     public function __construct()
-    {
-        parent::__construct();
-        $this->loadModel('Article');//articleTable
-        $this->loadModel('Chapter');//ChapterModel
-        $this->loadModel('Comment');//CommentModel qui extends de Model
-    }
+{
+    parent::__construct();
+    $this->loadModel('Article');//articleTable
+    $this->loadModel('Chapter');//ChapterModel
+    $this->loadModel('Comment');//CommentModel qui extends de Model
+}
 
     public function index()
     {

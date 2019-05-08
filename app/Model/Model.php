@@ -23,7 +23,7 @@ class Model
     protected function notFound()
     {
         header('HTTP/1.0 404 Not Found');
-        die('<img src="img/page_404.jpg" style="width: 100%;">');
+        die('<img src="img/erreur-404.jpg" style="width: 100%;">');
     }
 
     public function all()

@@ -58,7 +58,7 @@
 </nav>
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('img/banner.jpg'); background-attachment: fixed">
+<header class="masthead" style="background-image: url('img/login.jpg'); background-attachment: fixed">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -131,7 +131,7 @@
 <!-- Custom scripts for this template -->
 
 
-<script src="js/clean-blog.js"></script>
+<script src="js/projet_4.js"></script>
 </body>
 
 </html>

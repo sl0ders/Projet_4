@@ -17,7 +17,7 @@
                     </p>
                     <br>
                     <a href="<?= $article->url ?>">
-                        <em><?= $article->nb_com ?> Commentaires</em>
+                        <em><?= $article->nb_com ?> Commentaire<?php if ($article->nb_com > 1){echo 's';}?></em>
                     </a>
                     <div style="text-align: right; margin-right: 20px"><em><?= $article->date_fr ?></em></div>
                 </div>
