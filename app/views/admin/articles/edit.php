@@ -19,7 +19,7 @@ chapters => extract() renvoie l'id et le title de la table catagories
         <h2>Les articles</h2>
         <?php foreach ($articles as $article): ?>
             <ul>
-                <li><?= $article->number ?> - <?= $article->title; ?></li>
+                <li><?= $article->title; ?></li>
             </ul>
         <?php endforeach; ?>
     </div>

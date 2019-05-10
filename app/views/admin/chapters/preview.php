@@ -1,4 +1,4 @@
-<nav aria-label="navigation">
++<nav aria-label="navigation">
     <ul class="pager">
         <li class="previous"><a href="index.php?p=admin.chapters.index" title="Précédent">Précédent</a></li>
     </ul>

@@ -100,8 +100,7 @@ class Model
         } else {
             return $this->db->query(
                 $statement,
-                str_replace('Model',
-                    'Entity', get_class($this)),
+                str_replace('Model','Entity', get_class($this)),
                 $one
             );
         }

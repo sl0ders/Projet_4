@@ -38,7 +38,7 @@
         <tbody class="text-center">
         <?php foreach ($articles as $article) : ?>
             <tr class="item">
-                <td><?= $article->number; ?></td>
+                <td><?= $article->id; ?></td>
                 <td>Titre : <?= $article->title; ?></td>
                 <td><?= $article->chapterNumber; ?></td>
                 <td>Extrait : <?= $article->extractForAdmin; ?></td>
